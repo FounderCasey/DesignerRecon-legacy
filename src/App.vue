@@ -1,31 +1,197 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
     <router-view/>
+    <div class="beta-tag">
+      <img src="./assets/Meteor.png"><p>Alpha 0.1</p>
+    </div>
   </div>
 </template>
 
+<script>
+	
+	export default {
+		name: 'App',
+	}
+</script>
+
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+  @media (min-width: 980px) {
+      body {
+      width: 100%;
+      margin: 0;
+      color: #fcfcfc;
+      font-family: 'Montserrat', sans-serif;
+    }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+    button {
+          border: none;
+          outline: none;
+          width: 250px;
+          height: 50px;
+          font-size: 1.4em;
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 700;
+          border-radius: 5px;
+          background: #3A1819;
+          color: #fcfcfc;
+          margin-top: 25px;
+      }
+
+      button:hover {
+          cursor: pointer;
+      }
+
+      ::-webkit-scrollbar {
+        width: 0px;
+        background: transparent; /* make scrollbar transparent */
+      }
+
+      .beta-tag {
+        background: rgb(41, 41, 41);
+        font-weight: 700;
+        width: 110px;
+        text-align: center;
+        padding: 5px 3px;
+        font-size: 0.75em;
+        position: fixed;
+        bottom: 4%;
+        left: 2%;
+        border-radius: 5px;
+        box-shadow: 2px 2px 15px #0000008e;
+        color: rgb(197, 197, 197);
+      }
+
+      .beta-tag img {
+        height: 20px;
+        float: left;
+        padding-top: 4px;
+        padding-left: 7px;
+      }
+
+      .beta-tag p {
+        margin: 0;
+        padding-top: 4px;
+      }
+  }
+
+  @media (max-width: 980px) {
+      body {
+      width: 100%;
+      margin: 0;
+      color: #fcfcfc;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    button {
+          border: none;
+          outline: none;
+          width: 250px;
+          height: 50px;
+          font-size: 1.4em;
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 700;
+          border-radius: 5px;
+          background: #3A1819;
+          color: #fcfcfc;
+          margin-top: 25px;
+      }
+
+      button:hover {
+          cursor: pointer;
+      }
+
+      ::-webkit-scrollbar {
+        width: 0px;
+        background: transparent; /* make scrollbar transparent */
+      }
+
+      .beta-tag {
+        background: rgb(41, 41, 41);
+        font-weight: 700;
+        width: 110px;
+        text-align: center;
+        padding: 5px 3px;
+        font-size: 0.75em;
+        position: fixed;
+        bottom: 4%;
+        left: 2%;
+        border-radius: 5px;
+        box-shadow: 2px 2px 15px #0000008e;
+        color: rgb(197, 197, 197);
+      }
+
+      .beta-tag img {
+        height: 20px;
+        float: left;
+        padding-top: 4px;
+        padding-left: 7px;
+      }
+
+      .beta-tag p {
+        margin: 0;
+        padding-top: 4px;
+      }
+  }
+
+  @media (max-width: 980px) {
+      body {
+      width: 100%;
+      margin: 0;
+      color: #fcfcfc;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    button {
+          border: none;
+          outline: none;
+          width: 250px;
+          height: 50px;
+          font-size: 1.4em;
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 700;
+          border-radius: 5px;
+          background: #3A1819;
+          color: #fcfcfc;
+          margin-top: 25px;
+      }
+
+      button:hover {
+          cursor: pointer;
+      }
+
+      ::-webkit-scrollbar {
+        width: 0px;
+        background: transparent; /* make scrollbar transparent */
+      }
+
+      .beta-tag {
+        background: rgb(41, 41, 41);
+        font-weight: 700;
+        width: 110px;
+        text-align: center;
+        padding: 5px 3px;
+        font-size: 0.75em;
+        position: fixed;
+        bottom: 4%;
+        left: 2%;
+        border-radius: 5px;
+        box-shadow: 2px 2px 15px #0000008e;
+        color: rgb(197, 197, 197);
+
+        display: none;
+      }
+
+      .beta-tag img {
+        height: 20px;
+        float: left;
+        padding-top: 4px;
+        padding-left: 7px;
+      }
+
+      .beta-tag p {
+        margin: 0;
+        padding-top: 4px;
+      }
+  }
 </style>
