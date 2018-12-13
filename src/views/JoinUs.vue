@@ -55,136 +55,538 @@
 </script>
 
 <style scoped>
-    .welcome {
-        width: 100%;
-        margin: 0;
-        font-family: 'Montserrat', sans-serif;
-    }
-
-    .header {
-        text-align: left;
-        margin: 0;
-        padding-bottom: 70px;
-        background: linear-gradient(180deg, coral, rgb(255, 80, 80));
-    }
-
-    .hcontainer {
-        width: 80%;
-        margin: auto;
-        padding: 40px 0;
-    }
-
-    .hcontainer h1 {
-        font-size: 4em;
-        width: 45%;
-        float: left;
-    }
-
-    .hcontainer h3 {
-        font-size: 2em;
-        font-weight: 500;
-        width: 43%;
-    }
-
-    .hcontainer img {
-        float: right;
-        margin-top: 50px;
-        animation: slide-in-bottom 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    }
-
-    @keyframes slide-in-bottom {
-        0% {
-            transform: translateY(200px);
-            opacity: 0;
+    @media (min-width: 1440px) {
+        .welcome {
+            width: 100%;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
         }
-        100% {
-            transform: translateY(0);
-            opacity: 1;
+
+        .header {
+            text-align: left;
+            margin: 0;
+            padding-bottom: 70px;
+            background: linear-gradient(180deg, coral, rgb(255, 80, 80));
+        }
+
+        .hcontainer {
+            width: 80%;
+            margin: auto;
+            padding: 40px 0;
+        }
+
+        .hcontainer h1 {
+            font-size: 4em;
+            width: 45%;
+            float: left;
+        }
+
+        .hcontainer h3 {
+            font-size: 2em;
+            font-weight: 500;
+            width: 43%;
+        }
+
+        .hcontainer img {
+            float: right;
+            margin-top: 50px;
+            animation: slide-in-bottom 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        }
+
+        @keyframes slide-in-bottom {
+            0% {
+                transform: translateY(200px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        button {
+            border: none;
+            outline: none;
+            width: 250px;
+            height: 50px;
+            font-size: 1.4em;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            border-radius: 5px;
+            background: #3A1819;
+            color: #fcfcfc;
+            margin-top: 25px;
+        }
+
+        button:hover {
+            cursor: pointer;
+        }
+
+        .container {
+            color: #333;
+        }
+
+        .wrap {
+            width: 80%;
+            margin: auto;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .wrap h2 {
+            font-size: 2.75em;
+        }
+
+        .wrap h4 {
+            font-size: 1.3em;
+            margin-top: -25px;
+            margin-bottom: 50px;
+        }
+
+        .pricebox {
+            width: 650px;
+            margin: auto;
+        }
+
+        .pricecard {
+            width: 40%;
+            display: inline-block;
+            margin: 0 15px;
+            background: rgb(255, 255, 255);
+            border-radius: 5px;
+            box-shadow: 0 5px 25px #45454554;
+            padding: 0 15px;
+        }
+
+        .pricecard button {
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .pricecard span {
+            color: #979797;
+            font-weight: 500;
+            font-size: 0.5em;
+            vertical-align: 45%;
+        }
+
+        .pricecard h2 {
+            font-size: 2em;
+        }
+
+        .pricecard h3 {
+            font-size: 2.5em;
+            margin: 0 0 25px 0;
+        }
+
+        hr {
+            height: 4px;
+            border: none;
+            outline: none;
+            background: coral;
+            width: 100px;
+            border-radius: 5px;
         }
     }
 
-    button {
-        border: none;
-        outline: none;
-        width: 250px;
-        height: 50px;
-        font-size: 1.4em;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 700;
-        border-radius: 5px;
-        background: #3A1819;
-        color: #fcfcfc;
-        margin-top: 25px;
+    @media (max-width: 1440px) {
+        .welcome {
+            width: 100%;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .header {
+            text-align: left;
+            margin: 0;
+            padding-bottom: 70px;
+            background: linear-gradient(180deg, coral, rgb(255, 80, 80));
+        }
+
+        .hcontainer {
+            width: 80%;
+            margin: auto;
+            padding: 40px 0;
+        }
+
+        .hcontainer h1 {
+            font-size: 3em;
+            width: 40%;
+            float: left;
+        }
+
+        .hcontainer h3 {
+            font-size: 1.6em;
+            font-weight: 500;
+            width: 43%;
+        }
+
+        .hcontainer img {
+            float: right;
+            margin-top: 5%;
+            min-width: 300px;
+            max-width: 50%;
+            animation: slide-in-bottom 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        }
+
+        @keyframes slide-in-bottom {
+            0% {
+                transform: translateY(200px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        button {
+            border: none;
+            outline: none;
+            width: 250px;
+            height: 50px;
+            font-size: 1.4em;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            border-radius: 5px;
+            background: #3A1819;
+            color: #fcfcfc;
+            margin-top: 25px;
+        }
+
+        button:hover {
+            cursor: pointer;
+        }
+
+        .container {
+            color: #333;
+        }
+
+        .wrap {
+            width: 80%;
+            margin: auto;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .wrap h2 {
+            font-size: 2.75em;
+        }
+
+        .wrap h4 {
+            font-size: 1.3em;
+            margin-top: -25px;
+            margin-bottom: 50px;
+        }
+
+        .pricebox {
+            width: 650px;
+            margin: auto;
+        }
+
+        .pricecard {
+            width: 40%;
+            display: inline-block;
+            margin: 0 15px;
+            background: rgb(255, 255, 255);
+            border-radius: 5px;
+            box-shadow: 0 5px 25px #45454554;
+            padding: 0 15px;
+        }
+
+        .pricecard button {
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .pricecard span {
+            color: #979797;
+            font-weight: 500;
+            font-size: 0.5em;
+            vertical-align: 45%;
+        }
+
+        .pricecard h2 {
+            font-size: 2em;
+        }
+
+        .pricecard h3 {
+            font-size: 2.5em;
+            margin: 0 0 25px 0;
+        }
+
+        hr {
+            height: 4px;
+            border: none;
+            outline: none;
+            background: coral;
+            width: 100px;
+            border-radius: 5px;
+        }
     }
 
-    button:hover {
-        cursor: pointer;
+    @media (max-width: 980px) {
+        .welcome {
+            width: 100%;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .header {
+            text-align: left;
+            margin: 0;
+            padding-bottom: 70px;
+            background: linear-gradient(180deg, coral, rgb(255, 80, 80));
+        }
+
+        .hcontainer {
+            width: 80%;
+            margin: auto;
+            padding: 40px 0;
+        }
+
+        .hcontainer h1 {
+            font-size: 3em;
+            width: 50%;
+            float: left;
+        }
+
+        .hcontainer h3 {
+            font-size: 1.6em;
+            font-weight: 500;
+            width: 43%;
+        }
+
+        .hcontainer img {
+            float: right;
+            margin-top: 14%;
+            min-width: 250px;
+            max-width: 50%;
+            animation: slide-in-bottom 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        }
+
+        @keyframes slide-in-bottom {
+            0% {
+                transform: translateY(200px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        button {
+            border: none;
+            outline: none;
+            width: 250px;
+            height: 50px;
+            font-size: 1.4em;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            border-radius: 5px;
+            background: #3A1819;
+            color: #fcfcfc;
+            margin-top: 25px;
+        }
+
+        button:hover {
+            cursor: pointer;
+        }
+
+        .container {
+            color: #333;
+        }
+
+        .wrap {
+            width: 80%;
+            margin: auto;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .wrap h2 {
+            font-size: 2.75em;
+        }
+
+        .wrap h4 {
+            font-size: 1.3em;
+            margin-top: -25px;
+            margin-bottom: 50px;
+        }
+
+        .pricebox {
+            width: 650px;
+            margin: auto;
+        }
+
+        .pricecard {
+            width: 40%;
+            display: inline-block;
+            margin: 0 15px;
+            background: rgb(255, 255, 255);
+            border-radius: 5px;
+            box-shadow: 0 5px 25px #45454554;
+            padding: 0 15px;
+        }
+
+        .pricecard button {
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .pricecard span {
+            color: #979797;
+            font-weight: 500;
+            font-size: 0.5em;
+            vertical-align: 45%;
+        }
+
+        .pricecard h2 {
+            font-size: 2em;
+        }
+
+        .pricecard h3 {
+            font-size: 2.5em;
+            margin: 0 0 25px 0;
+        }
+
+        hr {
+            height: 4px;
+            border: none;
+            outline: none;
+            background: coral;
+            width: 100px;
+            border-radius: 5px;
+        }
     }
 
-    .container {
-        color: #333;
-    }
+    @media (max-width: 800px) {
+        .welcome {
+            width: 100%;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
 
-    .wrap {
-        width: 80%;
-        margin: auto;
-        padding: 50px;
-        text-align: center;
-    }
+        .header {
+            text-align: left;
+            margin: 0;
+            padding-bottom: 70px;
+            background: linear-gradient(180deg, coral, rgb(255, 80, 80));
+        }
 
-    .wrap h2 {
-        font-size: 2.75em;
-    }
+        .hcontainer {
+            width: 90%;
+            margin: auto;
+            padding: 40px 0;
+        }
 
-    .wrap h4 {
-        font-size: 1.3em;
-        margin-top: -25px;
-        margin-bottom: 50px;
-    }
+        .hcontainer h1 {
+            font-size: 2em;
+            width: 100%;
+        }
 
-    .pricebox {
-        width: 650px;
-        margin: auto;
-    }
+        .hcontainer h3 {
+            font-size: 1.6em;
+            font-weight: 500;
+            width: 100%;
+        }
 
-    .pricecard {
-        width: 40%;
-        display: inline-block;
-        margin: 0 15px;
-        background: rgb(255, 255, 255);
-        border-radius: 5px;
-        box-shadow: 0 5px 25px #45454554;
-        padding: 0 15px;
-    }
+        .hcontainer img {
+            float: right;
+            margin-top: 14%;
+            min-width: 250px;
+            max-width: 50%;
+            animation: slide-in-bottom 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+            display: none;
+        }
 
-    .pricecard button {
-        margin-top: 15px;
-        margin-bottom: 25px;
-    }
+        button {
+            border: none;
+            outline: none;
+            width: 250px;
+            height: 50px;
+            font-size: 1.4em;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            border-radius: 5px;
+            background: #3A1819;
+            color: #fcfcfc;
+            margin-top: 25px;
+        }
 
-    .pricecard span {
-        color: #979797;
-        font-weight: 500;
-        font-size: 0.5em;
-        vertical-align: 45%;
-    }
+        button:hover {
+            cursor: pointer;
+        }
 
-    .pricecard h2 {
-        font-size: 2em;
-    }
+        .container {
+            color: #333;
+            width: 100%;
+        }
 
-    .pricecard h3 {
-        font-size: 2.5em;
-        margin: 0 0 25px 0;
-    }
+        .wrap {
+            width: 100%;
+            margin: auto;
+            text-align: center;
+            padding: 0;
+        }
 
-    hr {
-        height: 4px;
-        border: none;
-        outline: none;
-        background: coral;
-        width: 100px;
-        border-radius: 5px;
+        .wrap h2 {
+            font-size: 2.15em;
+        }
+
+        .wrap h4 {
+            font-size: 1.1em;
+            margin-top: -25px;
+            margin-bottom: 50px;
+        }
+
+        .pricebox {
+            width: 100%;
+            margin: auto;
+        }
+
+        .pricecard {
+            max-width: 300px;
+            min-width: 250px;
+            display: inline-block;
+            margin: 15px 15px;
+            background: rgb(255, 255, 255);
+            border-radius: 5px;
+            box-shadow: 0 5px 25px #45454554;
+            padding: 0 15px;
+        }
+
+        .pricecard button {
+            margin-top: 15px;
+            margin-bottom: 25px;
+            width: 90%;
+        }
+
+        .pricecard span {
+            color: #979797;
+            font-weight: 500;
+            font-size: 0.5em;
+            vertical-align: 45%;
+        }
+
+        .pricecard h2 {
+            font-size: 2em;
+        }
+
+        .pricecard h3 {
+            font-size: 2.5em;
+            margin: 0 0 25px 0;
+        }
+
+        hr {
+            height: 4px;
+            border: none;
+            outline: none;
+            background: coral;
+            width: 100px;
+            border-radius: 5px;
+        }
     }
 </style>
 

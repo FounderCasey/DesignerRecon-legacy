@@ -15,6 +15,9 @@
 </script>
 
 <style>
+  body {
+    -webkit-appearance: none !important;
+  }
 
   @media (min-width: 980px) {
       body {

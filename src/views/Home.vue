@@ -77,6 +77,11 @@ export default {
     height: 100vh;
   }
 
+  .tcontainer {
+    width: 85%;
+    margin: auto;
+  }
+
   table {
     border-spacing: 0 10px;
     margin: auto;
@@ -89,7 +94,7 @@ export default {
   }
 
   td {
-    width: 250px;
+    width: 200px;
     vertical-align: top;
     padding: 10px 25px;
   }
@@ -113,7 +118,7 @@ export default {
   }
 
   .td-first {
-    width: 150px;
+    width: 120px;
     border-radius: 5px 0 0 5px;
   }
 
