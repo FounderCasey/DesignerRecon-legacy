@@ -5,6 +5,7 @@ import firebase from 'firebase'
 import 'firebase/firestore'
 import VueFire from 'vuefire'
 import VueMq from 'vue-mq'
+import Meta from 'vue-meta'
 
 Vue.config.productionTip = false
 
@@ -24,6 +25,7 @@ const settings = {
 }
 
 Vue.use(VueFire)
+Vue.use(Meta)
 
 Vue.use(VueMq, {
   breakpoints: {

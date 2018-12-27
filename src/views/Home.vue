@@ -46,6 +46,9 @@ export default {
       selectedLead: {}
     }
   },
+  metaInfo: {
+    title: 'Home'
+  },
   components: {
     DashBar: DashBar
   },

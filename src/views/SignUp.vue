@@ -28,6 +28,9 @@ import Navbar from './Navbar'
                 password: ''
             }
         },
+        metaInfo: {
+            title: 'Sign Up'
+        },
         components: {
             Navbar: Navbar
         },

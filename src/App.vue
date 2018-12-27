@@ -10,7 +10,15 @@
 <script>
 	
 	export default {
-		name: 'App',
+    name: 'App',
+    metaInfo: {
+      // Children can override the title.
+      title: 'Welcome',
+      // Result: My Page Title ← My Site
+      // If a child changes the title to "My Other Page Title",
+      // it will become: My Other Page Title ← My Site
+      titleTemplate: '%s | Designer Recon'
+    }
 	}
 </script>
 

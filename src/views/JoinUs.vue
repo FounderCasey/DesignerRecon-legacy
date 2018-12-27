@@ -1,57 +1,60 @@
 <template>
-    <div class="welcome">
-        <div class="header">
-            <Navbar></Navbar>
-            <div class="hcontainer">
-                <h1>You are the designer we are searching for.</h1>
-                <img src="../assets/Meteor.png">
-                <h3>Join our network, we find and deliver design leads directly to you, daily.</h3>
-                <button>Join Us</button>
+  <div class="welcome">
+    <div class="header">
+      <Navbar></Navbar>
+      <div class="hcontainer">
+        <h1>You are the designer we are searching for.</h1>
+        <img src="../assets/Meteor.png">
+        <h3>Join our network, we find and deliver design leads directly to you, daily.</h3>
+        <button>Join Us</button>
+      </div>
+    </div>
+    <div class="container">
+      <div class="wrap">
+          <h2>Our Pricing</h2>
+          <h4>Straight Forward and Transparent</h4>
+          <div class="pricebox">
+            <div class="pricecard">
+              <h2>Indie</h2>
+              <h3><span>$ </span>19.99<span> /mo</span></h3>
+              <hr>
+              <p>Leads Delivered to Your Dashboard</p>
+              <p>Leads Delivered Twice a Week</p>
+              <p>Up to 25 Leads Per Week</p>
+              <button @click="toSignUp">Start Free Trial</button>
             </div>
-        </div>
-        <div class="container">
-            <div class="wrap">
-                <h2>Our Pricing</h2>
-                <h4>Straight Forward and Transparent</h4>
-                <div class="pricebox">
-                    <div class="pricecard">
-                        <h2>Indie</h2>
-                        <h3><span>$ </span>19.99<span> /mo</span></h3>
-                        <hr>
-                        <p>Leads Delivered to Your Dashboard</p>
-                        <p>Leads Delivered Twice a Week</p>
-                        <p>Up to 25 Leads Per Week</p>
-                        <button @click="toSignUp">Start Free Trial</button>
-                    </div>
-                    <div class="pricecard">
-                        <h2>Team</h2>
-                        <h3><span>$ </span>49.99<span> /mo</span></h3>
-                        <hr>
-                        <p>Leads Delivered to Your Dashboard</p>
-                        <p>Leads Delivered Immediately</p>
-                        <p>Unlimited Leads</p>
-                        <button @click="toSignUp">Start Free Trial</button>
-                    </div>
-                </div>
+            <div class="pricecard">
+              <h2>Team</h2>
+              <h3><span>$ </span>49.99<span> /mo</span></h3>
+              <hr>
+              <p>Leads Delivered to Your Dashboard</p>
+              <p>Leads Delivered Immediately</p>
+              <p>Unlimited Leads</p>
+              <button @click="toSignUp">Start Free Trial</button>
             </div>
+          </div>
         </div>
     </div>
+  </div>
 </template>
 
 <script>
-    import Navbar from './Navbar.vue'
+  import Navbar from './Navbar.vue'
 
-    export default {
-        name: 'welcome',
-        components: {
-            Navbar: Navbar
-        },
-        methods: {
-            toSignUp: function() {
-                this.$router.replace('SignUp');
-            }
-        }
+  export default {
+    name: 'welcome',
+    components: {
+      Navbar: Navbar
+    },
+    metaInfo: {
+      title: 'Join Us'
+    },
+    methods: {
+      toSignUp: function() {
+        this.$router.replace('SignUp');
+      }
     }
+  }
 </script>
 
 <style scoped>

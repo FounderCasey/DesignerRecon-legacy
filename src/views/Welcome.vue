@@ -72,6 +72,9 @@
                 seen: true
             }
         },
+        metaInfo: {
+            title: 'Welcome'
+        },
         components: {
             Navbar: Navbar
         },

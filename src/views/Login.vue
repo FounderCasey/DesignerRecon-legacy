@@ -23,6 +23,9 @@
                 password: ''
             };
         },
+        metaInfo: {
+            title: 'Login'
+        },
         components: {
             Navbar: Navbar
         },
