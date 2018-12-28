@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="dashboard">
     <DashBar></DashBar>
     <div class="tcontainer">
       <table>
@@ -14,7 +14,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="lead in leads">
+          <tr v-for="(lead, index) in leads" :key="index">
             <td class="td-first">{{ lead.name }}</td>
             <td><a v-bind:href="'mailto:' + lead.email">{{ lead.email }}</a></td>
             <td>{{ lead.company }}</td>
@@ -39,7 +39,7 @@ import { db } from '../main.js'
 import DashBar from './DashBar'
 
 export default {
-  name: 'home',
+  name: 'dashboard',
   data() {
     return {
       leads: [],
@@ -58,11 +58,6 @@ export default {
     }
   },
   methods: {
-    logout: function() {
-      firebase.auth().signOut().then(() => {
-        this.$router.replace('login');
-      })
-    },
     report: function(reportedLead) {
       this.selectedLead = reportedLead;
       // update data from db
@@ -73,11 +68,12 @@ export default {
 </script>
 
 <style scoped>
-  .home {
+  .dashboard {
     font-family: 'Montserrat', sans-serif;
     color: #3A1819;
     background: #f3f3f3;
     height: 100vh;
+    overflow: scroll;
   }
 
   .tcontainer {

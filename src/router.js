@@ -2,13 +2,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import firebase from 'firebase'
 
-import Home from './views/Home.vue'
+import Dashboard from './views/Dashboard.vue'
 import Login from './views/Login.vue'
 import SignUp from './views/SignUp.vue'
 import Welcome from './views/Welcome.vue'
 import JoinUs from './views/JoinUs.vue'
-
-import WelcomeCopy from './views/WelcomeCopy.vue'
 
 Vue.use(Router)
 
@@ -22,11 +20,6 @@ const router = new Router({
       path: '/welcome',
       name: 'Welcome',
       component: Welcome
-    },
-    {
-    path: '/welcomecopy',
-    name: 'WelcomeCopy',
-    component: WelcomeCopy
     },
     {
       path: '/join',
@@ -44,9 +37,9 @@ const router = new Router({
       component: SignUp
     },
     {
-      path: '/home',
-      name: 'Home',
-      component: Home,
+      path: '/dashboard',
+      name: 'Dashboard',
+      component: Dashboard,
       meta: {
         requiresAuth: true
       }

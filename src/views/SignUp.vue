@@ -47,7 +47,7 @@ import Navbar from './Navbar'
                             email: this.email,
                             company: this.company
                         })
-                        this.$router.replace('home');
+                        this.$router.replace('dashboard');
                     },
                     (err) => {
                         alert("Error: " + err.message);

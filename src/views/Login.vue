@@ -33,7 +33,7 @@
             login: function() {
                 firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(
                     (user) => {
-                        this.$router.replace('home');
+                        this.$router.replace('dashboard');
                     },
                     (err) => {
                         alert("Error: " + err.message);

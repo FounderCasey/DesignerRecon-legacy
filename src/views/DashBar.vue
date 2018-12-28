@@ -45,9 +45,14 @@
 		},
 		methods: {
 			logout: function() {
-				firebase.auth().signOut().then(() => {
-					this.$router.replace('login');
-				})
+				let confirm = window.confirm("Are you sure you want to logout?");
+				if (confirm) {
+					firebase.auth().signOut().then(() => {
+						this.$router.replace('login');
+					})
+				} else {
+					console.log("Did not log out")
+				}
 			}
 		}
 	}
