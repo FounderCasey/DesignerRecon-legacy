@@ -51,7 +51,7 @@
     },
     methods: {
       toSignUp: function() {
-      this.$router.replace('SignUp');
+        this.$router.replace('SignUp');
       }
     }
   }

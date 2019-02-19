@@ -7,6 +7,8 @@ import Login from './views/Login.vue'
 import SignUp from './views/SignUp.vue'
 import Welcome from './views/Welcome.vue'
 import JoinUs from './views/JoinUs.vue'
+import Thanks from './views/Thanks.vue'
+import Confirmation from './views/Confirmation.vue'
 
 Vue.use(Router)
 
@@ -20,6 +22,16 @@ const router = new Router({
       path: '/welcome',
       name: 'Welcome',
       component: Welcome
+    },
+    {
+      path: '/thanks',
+      name: 'Thanks',
+      component: Thanks
+    },
+    {
+      path: '/confirmation',
+      name: 'Confirmation',
+      component: Confirmation
     },
     {
       path: '/join',
@@ -52,7 +64,7 @@ router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
 
   if (requiresAuth && !currentUser) next('login');
-  else if (!requiresAuth && currentUser) next('home');
+  else if (!requiresAuth && currentUser) next('dashboard');
   else next();
 });
 

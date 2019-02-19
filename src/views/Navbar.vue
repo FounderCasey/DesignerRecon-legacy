@@ -23,7 +23,7 @@
 
 <script>
 	export default {
-		name: 'Navbar',
+		name: 'navbar',
 		data: function() {
 			return {
 				links: [
@@ -60,6 +60,7 @@
 <style>
 	@media (min-width: 980px) {
 		nav {
+			z-index: 1;
 			width: 100%; /* Full width */
 			margin: auto;
 			font-family: 'Montserrat', sans-serif;
@@ -120,6 +121,7 @@
 
 	@media (max-width: 980px) {
 		nav {
+			z-index: 10;
 			width: 100%; /* Full width */
 			margin: auto;
 			font-family: 'Montserrat', sans-serif;
