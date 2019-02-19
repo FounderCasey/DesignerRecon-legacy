@@ -149,10 +149,6 @@
       font-weight: normal;
     }
 
-    #disabled {
-      color: red !important;
-    }
-
     .submit {
       border: none;
       outline: none;

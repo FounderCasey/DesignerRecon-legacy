@@ -5,7 +5,7 @@
       <h3>Login</h3>
       <input type="text" v-model="email" placeholder="Email"><br>
       <input type="password" v-model="password" placeholder="Password"><br>
-      <button @click="login">Login</button>
+      <button class="submit-button" @click="login">Login</button>
       <p>Need an account? <router-link to="/signup">Create one</router-link></p>
     </div>
   </div>

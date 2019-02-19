@@ -47,10 +47,15 @@
           background: #3A1819;
           color: #fcfcfc;
           margin-top: 25px;
+          transition: 3s;
       }
 
       button:hover {
           cursor: pointer;
+      }
+
+      .submit-button:active {
+        background: linear-gradient(45deg, rgb(164, 95, 243), rgb(108, 167, 243));
       }
 
       ::-webkit-scrollbar {

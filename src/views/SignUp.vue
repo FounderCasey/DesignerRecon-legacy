@@ -7,7 +7,7 @@
       <input type="text" v-model="email" placeholder="Email"><br>
       <input type="text" v-model="company" placeholder="Company"><br>
       <input type="password" v-model="password" placeholder="Password"><br>
-      <button @click="signUp">Sign Up</button>
+      <button class="submit-button" @click="signUp">Sign Up</button>
       <p>Have an account? <router-link to="/login">Login</router-link></p>
     </div>
   </div>
