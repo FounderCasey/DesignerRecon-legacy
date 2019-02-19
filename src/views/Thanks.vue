@@ -6,7 +6,7 @@
 			<div class="hcontainer">
 				<h1>Thank you!</h1>
 				<img src="../assets/Meteor.png">
-				<h3>Welcome to Designer Recon!<br><br>Now, check your email. We have sent you the next steps!</h3>
+				<h3>Welcome to Designer Recon!<br><br>We are finding Designers for you!</h3>
 			</div>
     </div>
   </div>

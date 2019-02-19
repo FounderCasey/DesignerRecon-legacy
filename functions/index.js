@@ -25,7 +25,7 @@ exports.firestoreEmail = functions.firestore
     const msg = {
       to: data.email,
       from: 'casey@designerrecon.com',
-      subject: 'test',
+      subject: 'Welcome!',
       templateId: 'd-f40775ad30d849dbac7a538006295df1'
       };
       return sgMail.send(msg);

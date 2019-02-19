@@ -13,6 +13,7 @@ import Confirmation from './views/Confirmation.vue'
 Vue.use(Router)
 
 const router = new Router({
+  mode: 'history',
   routes: [
     {
       path: '*',
