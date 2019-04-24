@@ -267,8 +267,8 @@ th {
 
 td {
   width: 200px;
-  vertical-align: top;
   padding: 10px 25px;
+
 }
 
 tr:hover {
@@ -283,6 +283,7 @@ tr {
   text-align: left;
   background: white;
   transition: 0.2s;
+  padding: 50% 0;
 }
 
 .td-desc {
