@@ -107,6 +107,7 @@
 			font-size: 2em;
 			font-weight: 700;
 			border: none;
+			color: #fcfcfc;
 		}
 		
 		.special:hover {

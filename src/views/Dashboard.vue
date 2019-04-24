@@ -4,8 +4,9 @@
     <div class="tcontainer">
       <div class="filter-bar">
         <ul>
-          <li @click="toggle = true">All</li>
-          <li @click="toggle = false">Favorites</li>
+          <li @click="toggle = true" v-bind:class="{'li-on': toggle,  'li-off': !toggle}">All</li>
+          <li>•</li>
+          <li @click="toggle = false" v-bind:class="{'li-on': !toggle,  'li-off': toggle}">Favorites</li>
         </ul>
       </div>
       <table>
@@ -13,7 +14,7 @@
           <tr class="header-row">
             <th>Name</th>
             <th>Company</th>
-            <th>Service</th>
+            <th>Type</th>
             <th>Added</th>
             <th>Description</th>
             <th>Actions</th>
@@ -27,8 +28,11 @@
             <td id="td-date">{{ lead.date }}</td>
             <td class="td-desc">{{ lead.description }}</td>
             <td class="td-last actions">
-              <a v-bind:href="'mailto:' + lead.email"><i class="fas fa-envelope email"></i></a>
-              <i class="fas fa-plus like" @click="addToLike(lead)"></i>
+              <a v-bind:href="'mailto:' + lead.email">
+                <i class="fas fa-envelope email"></i>
+              </a>
+              <i v-if="toggle" class="fas fa-plus like" @click="addToLike(lead)"></i>
+              <i v-if="!toggle" class="fas fa-minus unlike" @click="removeLike(lead)"></i>
               <i class="fas fa-exclamation report" @click="report(lead)"></i>
             </td>
           </tr>
@@ -40,37 +44,94 @@
 
 <script>
 // @ is an alias to /src
-import firebase from 'firebase'
-import { db } from '../main.js'
-import DashBar from './DashBar'
+import firebase from "firebase";
+import { db } from "../main.js";
+import DashBar from "./DashBar";
 
 export default {
-  name: 'dashboard',
+  name: "dashboard",
   data() {
     return {
+      user: [],
       leads: [],
+      finalLeads: [],
       usersLikes: [],
       toggle: true,
       selectedLead: {}
-    }
+    };
   },
   computed: {
     shownLeads: function() {
+      var user = firebase.auth().currentUser;
+      var userRef = db.collection("designers").doc(user.uid);
+      console.log(this.leads);
+      var allLeads = this.leads;
+      var brandLeads = [];
+      var logoLeads = [];
+      var appLeads = [];
+      var webLeads = [];
+      var productLeads = [];
+      var testLeads = this.leads;
+
+      let curr = this.user;
+
+      this.leads.forEach(element => {
+        if (element.service == "Brand Design") {
+          brandLeads.push(element);
+        }
+        if (element.service == "Logo Design") {
+          logoLeads.push(element);
+        }
+        if (element.service == "App Design") {
+          appLeads.push(element);
+        }
+        if (element.service == "Web Design") {
+          webLeads.push(element);
+        }
+        if (element.service == "Product Design") {
+          productLeads.push(element);
+        }
+      });
+
+      if (curr.allTypes) {
+        this.finalLeads = this.leads;
+      }
+
+      if (curr.brand && !curr.allTypes) {
+        this.finalLeads = this.finalLeads.concat(brandLeads);
+      }
+
+      if (curr.logo && !curr.allTypes) {
+        this.finalLeads = this.finalLeads.concat(logoLeads);
+      }
+
+      if (curr.web && !curr.allTypes) {
+        this.finalLeads = this.finalLeads.concat(webLeads);
+      }
+
+      if (curr.app && !curr.allTypes) {
+        this.finalLeads = this.finalLeads.concat(appLeads);
+      }
+
+      if (curr.product && !curr.allTypes) {
+        this.finalLeads = this.finalLeads.concat(productLeads);
+      }
+
+      console.log("Final: " + this.finalLeads);
+
       if (this.toggle) {
-        console.log("toggle off")
-        return this.leads.filter(function(lead) {
-          return lead.canView
-        })
+        return this.finalLeads.filter(function(lead) {
+          return lead.canView;
+        });
       } else {
-        console.log("toggle on")
         return this.usersLikes.filter(function(lead) {
-          return lead.canView
-        })
+          return lead.canView;
+        });
       }
     }
   },
   metaInfo: {
-    title: 'Dashboard'
+    title: "Dashboard"
   },
   components: {
     DashBar: DashBar
@@ -78,183 +139,275 @@ export default {
   firestore() {
     var user = firebase.auth().currentUser;
     return {
-      leads: db.collection('leads'),
-      usersLikes: db.collection("designers").doc(user.uid).collection('likes')
-    }
+      user: db.collection("designers").doc(user.uid),
+      leads: db.collection("leads"),
+      usersLikes: db
+        .collection("designers")
+        .doc(user.uid)
+        .collection("likes")
+    };
   },
   methods: {
     report: function(reportedLead) {
-      alert('Thank you for your report.')
       this.selectedLead = reportedLead;
       if (reportedLead.reports < 10) {
         reportedLead.reports++;
-        db.collection('leads').doc(`${reportedLead.id}`).set({
-          reports: reportedLead.reports
-        }, {merge: true})
+        db.collection("leads")
+          .doc(`${reportedLead.id}`)
+          .set(
+            {
+              reports: reportedLead.reports
+            },
+            { merge: true }
+          );
         console.log(reportedLead.reports);
+        this.$notify({
+          group: "foo",
+          type: "warn",
+          title: "Report Successful",
+          text: "We have received your report. Thank you."
+        });
         // update data from db
       } else if (reportedLead.reports >= 10) {
         reportedLead.canView = false;
-        db.collection('leads').doc(`${reportedLead.id}`).set({
-          canView: reportedLead.canView
-        },{merge: true})
-        console.log(reportedLead.canView)
+        db.collection("leads")
+          .doc(`${reportedLead.id}`)
+          .set(
+            {
+              canView: reportedLead.canView
+            },
+            { merge: true }
+          );
+        console.log(reportedLead.canView);
       }
     },
     addToLike: function(likedLead) {
       this.selectedLead = likedLead;
-      var user = firebase.auth().currentUser;
-      db.collection("designers").doc(user.uid).collection('likes').doc(likedLead.id).set({
-        canView: likedLead.canView,
-        company: likedLead.company,
-        confirmed: likedLead.confirmed,
-        date: likedLead.date,
-        description: likedLead.description,
-        email: likedLead.email,
-        name: likedLead.name,
-        reports: likedLead.reports,
-        service: likedLead.service
-      })
+      let user = firebase.auth().currentUser;
+      db.collection("designers")
+        .doc(user.uid)
+        .collection("likes")
+        .doc(likedLead.id)
+        .set({
+          canView: likedLead.canView,
+          company: likedLead.company,
+          confirmed: likedLead.confirmed,
+          date: likedLead.date,
+          description: likedLead.description,
+          email: likedLead.email,
+          name: likedLead.name,
+          reports: likedLead.reports,
+          service: likedLead.service
+        });
+      this.$notify({
+        group: "foo",
+        type: "success",
+        title: "Favorited",
+        text: "Added to your favorites."
+      });
     },
-    toggleLikes: function() {
-      
+    removeLike: function(likedLead) {
+      this.selectedLead = likedLead;
+      let user = firebase.auth().currentUser;
+      db.collection("designers")
+        .doc(user.uid)
+        .collection("likes")
+        .doc(likedLead.id)
+        .delete();
+      this.$notify({
+        group: "foo",
+        type: "error",
+        title: "Removed",
+        text: "Removed from your favorites."
+      });
     }
   }
-}
+};
 </script>
 
 <style scoped>
-  .dashboard {
-    font-family: 'Montserrat', sans-serif;
-    color: #3A1819;
-    background: #f3f3f3;
-    height: 100vh;
-    overflow: scroll;
-  }
+.dashboard {
+  font-family: "Montserrat", sans-serif;
+  color: #3a1819;
+  background: #f3f3f3;
+  height: 100vh;
+  overflow: scroll;
+  position: relative;
+}
 
-  .tcontainer {
-    width: 95%;
-    margin: auto;
-  }
+.tcontainer {
+  width: 100%;
+  margin: auto;
+}
 
-  table {
-    border-spacing: 0 10px;
-    margin: auto;
-    padding-top: 25px;
-  }
+.li-on {
+  font-weight: bolder;
+  text-decoration: underline;
+  color: #3a1819;
+}
 
-  th {
-    padding: 0px 25px;
-    background: #f3f3f3;
-  }
+.li-off {
+  color: #7e7e7e;
+}
 
-  td {
-    width: 200px;
-    vertical-align: top;
-    padding: 10px 25px;
-  }
+.li-off:hover {
+  text-decoration: underline;
+}
 
-  tr:hover {
-    box-shadow: 1px 2px 3px rgba(199, 199, 199, 0.575);
-  }
+table {
+  border-spacing: 0 10px;
+  margin: auto;
+  padding-top: 25px;
+}
 
-  .header-row:hover {
-    box-shadow: none;
-  }
-  
-  tr {
-    text-align: left;
-    background: white;
-    transition: 0.2s;
-  }
+th {
+  padding: 0px 25px;
+  background: #f3f3f3;
+}
 
-  .td-desc {
-    width: 350px;
-  }
+td {
+  width: 200px;
+  vertical-align: top;
+  padding: 10px 25px;
+}
 
-  .td-first {
-    width: 250px;
-    border-radius: 5px 0 0 5px;
-  }
+tr:hover {
+  box-shadow: 1px 2px 3px rgba(199, 199, 199, 0.575);
+}
 
-  .td-last {
-    width: 130px;
-    border-radius: 0px 5px 5px 0;
-    text-align: center;
-  }
+.header-row:hover {
+  box-shadow: none;
+}
 
-  #td-date {
-    width: 100px;
-  }
+tr {
+  text-align: left;
+  background: white;
+  transition: 0.2s;
+}
 
-  #td-service {
-    width: 250px;
-  }
+.td-desc {
+  width: 400px;
+}
 
-  #td-company {
-    width: 40px;
-  }
+.td-first {
+  width: 150px;
+  border-radius: 5px 0 0 5px;
+}
 
-  .actions {
-    vertical-align: middle;
-  }
+.td-last {
+  width: 130px;
+  border-radius: 0px 5px 5px 0;
+  text-align: center;
+}
 
-  i {
-    padding: 0px 5px;
-  }
+#td-date {
+  width: 100px;
+}
 
-  .report, .like, .email {
-    color: #3A1819;
-    transition: 0.3s;
-  }
+#td-service {
+  width: 150px;
+}
 
-  .report {
-    font-size: 1.2em;
-  }
+#td-company {
+  width: 150px;
+}
 
-  .like {
-    font-size: 1.35em;
-  }
+.actions {
+  vertical-align: middle;
+}
 
-  .email {
-    font-size: 1.25em;
-  }
+i {
+  padding: 0px 5px;
+}
 
-  .like:hover {
-    color: rgb(47, 167, 73);
-  }
+.report,
+.like,
+.email {
+  color: #3a1819;
+  transition: 0.3s;
+}
 
-  .report:hover {
-    color: crimson;
-  }
+.report {
+  font-size: 1.15em;
+}
 
-  .email:hover {
-    color: rgb(2, 90, 223);
-  }
+.like,
+.unlike {
+  font-size: 1.25em;
+}
 
-  .report:visited {
-    color: crimson;
-  }
+.email {
+  font-size: 1.25em;
+}
 
-  .filter-bar {
-    margin: auto;
-  }
+.like:hover {
+  color: rgb(47, 167, 73);
+}
 
-  .filter-bar ul {
-    list-style-type: none;
-    margin: 20px auto -10px auto;
-    padding: 0;
-    overflow: hidden;
-    width: 15%;
-  }
+.unlike:hover {
+  color: crimson;
+}
 
-  .filter-bar li {
-    float: left;
-    padding: 0px 10px;
-  }
+.report:hover {
+  color: crimson;
+}
 
-  .filter-bar li:hover {
-    cursor: pointer;
+.email:hover {
+  color: rgb(2, 90, 223);
+}
+
+.report:visited {
+  color: crimson;
+}
+
+.filter-bar {
+  margin: auto;
+}
+
+.filter-bar ul {
+  list-style-type: none;
+  margin: 20px auto -10px auto;
+  padding: 0;
+  overflow: hidden;
+  width: 15%;
+}
+
+.filter-bar li {
+  float: left;
+  padding: 0px 10px;
+}
+
+.filter-bar li:hover {
+  cursor: pointer;
+}
+
+.popup {
+  position: absolute;
+  bottom: -15%;
+  left: 50%;
+  transform: translate(-50%, -0%);
+  background: rgb(243, 101, 101);
+  padding: 0px 20px;
+  border-radius: 5px;
+  box-shadow: 1px 2px 9px #58585875;
+  color: #f3f3f3;
+  animation-name: popup_anim;
+  animation-duration: 2s;
+}
+
+@keyframes popup_anim {
+  0% {
+    bottom: -15%;
   }
+  20% {
+    bottom: 2%;
+  }
+  80% {
+    bottom: 2%;
+  }
+  100% {
+    bottom: -15%;
+  }
+}
 </style>
 

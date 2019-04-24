@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <router-view/>
+    <notifications group="foo" position='bottom center' />
     <div class="beta-tag">
       <img src="./assets/Meteor.png"><p>Alpha 0.1</p>
     </div>
@@ -47,7 +48,7 @@
           background: #3A1819;
           color: #fcfcfc;
           margin-top: 25px;
-          transition: 3s;
+          transition: 0.3s;
       }
 
       button:hover {

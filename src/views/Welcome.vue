@@ -54,6 +54,7 @@
         db.collection('emails').add({
           email: this.email
         });
+        this.email = "Thanks, we have sent you an email!";
       }
     }
   }

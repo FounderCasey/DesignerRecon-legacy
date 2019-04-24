@@ -14,24 +14,24 @@
       <h2>Our Pricing</h2>
       <h4>Straight Forward and Transparent</h4>
       <div class="pricebox">
-      <div class="pricecard">
-        <h2>Indie</h2>
-        <h3><span>$ </span>19.99<span> /mo</span></h3>
-        <hr>
-        <p>Leads Delivered to Your Dashboard</p>
-        <p>Leads Delivered Twice a Week</p>
-        <p>Up to 25 Leads Per Week</p>
-        <button @click="toSignUp">Start Free Trial</button>
-      </div>
-      <div class="pricecard">
-        <h2>Team</h2>
-        <h3><span>$ </span>49.99<span> /mo</span></h3>
-        <hr>
-        <p>Leads Delivered to Your Dashboard</p>
-        <p>Leads Delivered Immediately</p>
-        <p>Unlimited Leads</p>
-        <button @click="toSignUp">Start Free Trial</button>
-      </div>
+        <div class="pricecard">
+          <h2>Starter</h2>
+          <h3><span>$ </span>9.99<span> /mo</span></h3>
+          <hr>
+          <p>Leads Delivered to Your Dashboard</p>
+          <p>Leads Delivered Twice a Week</p>
+          <p>Up to 25 Leads Per Week</p>
+          <button class="trial-button" @click="toSignUp">Start Free Trial</button>
+        </div>
+        <div class="pricecard">
+          <h2>Premium</h2>
+          <h3><span>$ </span>29.99<span> /mo</span></h3>
+          <hr>
+          <p>Leads Delivered to Your Dashboard</p>
+          <p>Leads Delivered Daily</p>
+          <p>Unlimited Leads</p>
+          <button class="trial-button" @click="toSignUp">Start Free Trial</button>
+        </div>
       </div>
     </div>
   </div>
@@ -123,6 +123,10 @@
 
     button:hover {
       cursor: pointer;
+    }
+
+    .trial-button:hover {
+      background: rgb(238, 54, 54);
     }
 
     .container {
